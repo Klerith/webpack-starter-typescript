@@ -3,6 +3,7 @@ const MiniCssExtractPlugin    = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const MinifyPlugin            = require('babel-minify-webpack-plugin');
 const { CleanWebpackPlugin }  = require('clean-webpack-plugin');
+const CopyPlugin              = require('copy-webpack-plugin'); 
 
 module.exports = {
     entry: './src/index.ts',
@@ -55,7 +56,7 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(png|svg|jpg|gif)$/,
+                test: /\.(png|svg|jpg|gif|ico)$/,
                 use: [
                     {
                         loader: 'file-loader',
@@ -79,6 +80,9 @@ module.exports = {
         }),
         new MinifyPlugin(),
         new CleanWebpackPlugin(),
+        new CopyPlugin([
+            { from: 'src/favicon.ico', to: './favicon.ico' },
+        ]),
     ]
 
 }
