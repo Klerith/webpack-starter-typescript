@@ -12,15 +12,32 @@ import db from "./firebase/config";
 
 
 //INSERTAR campo:
-    //usuarios_ref
+    // usuarios_ref
     //     .add(usuario)
     
 // ACTUALIZAR o MODIFICAR campos:
-    // usuarios_ref.doc("ID del campo")
+    // usuarios_ref.doc("ID del campo a modificar")
     //     .update({
     //         pares de atributos-valor a modificar
     //     })
 
 // BORRAR campos:
-    usuarios_ref.doc("85cse48pui3mSHbW9UMQ")
-    .delete()
+    // usuarios_ref.doc("ID del campo a borrar")
+    //      .delete();
+
+// SELECCIONAR todos los registros de una tabla:
+    usuarios_ref
+        .onSnapshot(snap => {
+            const usuarios: any[] = [];
+            
+            snap.forEach(snap_hijo => {
+                usuarios.push({
+                    id: snap_hijo.id,
+                    ...snap_hijo.data()
+                });
+            });
+
+            console.log(usuarios)
+        });
+
+
