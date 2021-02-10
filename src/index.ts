@@ -1,4 +1,5 @@
 import db from "./firebase/config";
+import firebase from "firebase"
 
 // CREAR tabla:
     const usuario = {
@@ -26,18 +27,22 @@ import db from "./firebase/config";
     //      .delete();
 
 // SELECCIONAR todos los registros de una tabla:
-    usuarios_ref
-        .onSnapshot(snap => {
-            const usuarios: any[] = [];
+    const mostrar_registros = (snap: firebase.firestore.QuerySnapshot) => {
+            const documentos: any[] = [];
             
             snap.forEach(snap_hijo => {
-                usuarios.push({
+                documentos.push({
                     id: snap_hijo.id,
                     ...snap_hijo.data()
                 });
             });
 
-            console.log(usuarios)
-        });
+            console.log(documentos)
+            return documentos;
+    }
+    // Llamada a la función:
+        usuarios_ref
+            .onSnapshot(mostrar_registros);
+
 
 
