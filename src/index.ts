@@ -15,14 +15,12 @@ import db from "./firebase/config";
     //usuarios_ref
     //     .add(usuario)
     
-    //     .then(docReft => {
-    //             console.log(docReft.delete)
-    //         })
-    //         .catch(e => console.log("error", e))
-    
-// ACTUALIZAR campo:
-    usuarios_ref.doc("Nmpj380gUTxjBSklLqlJ")
-        .update({
-            activos: true,
-            nacimiento: 5
-        })
+// ACTUALIZAR o MODIFICAR campos:
+    // usuarios_ref.doc("ID del campo")
+    //     .update({
+    //         pares de atributos-valor a modificar
+    //     })
+
+// BORRAR campos:
+    usuarios_ref.doc("85cse48pui3mSHbW9UMQ")
+    .delete()
