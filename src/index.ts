@@ -82,10 +82,17 @@ import firebase from "firebase";
 // ORDENAR registros seleccionados:
 // (SELECT * from usuarios ORDER BY nombre)
 
-    usuarios_ref
-        .orderBy("nombre")
-        .orderBy("nacimiento", "desc")
-        .onSnapshot(mostrar_registros);
+    // usuarios_ref
+    //     .orderBy("nombre", "desc")
+    //     .onSnapshot(mostrar_registros);
 
 // Nota: si un registro tiene vacío el campo como referente, este no se mostrará.
 // Para ordenar de forma descendente colocamos "desc" al final del .orderBy().
+
+// LIMITES:
+
+    usuarios_ref
+        .limit(3)
+        .onSnapshot(mostrar_registros);
+
+// Nota: los limites nos permiten controlar el número de registros que van a mostrarse. 
