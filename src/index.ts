@@ -1,6 +1,5 @@
+import { Xman } from "../classes/xman.class";
 
+const wolv = new Xman('Wolverine','Logan');
 
-
-const mensaje = 'Hola Mundo!';
-
-console.log( mensaje );
+wolv.imprimir();
